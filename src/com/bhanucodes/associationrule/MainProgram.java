@@ -51,15 +51,37 @@ public class MainProgram {
 			System.out.println(item + " "+ c2.get(item));		
 		}
 		
-		Map<List<String>, Integer> c3 = new HashMap<List<String>, Integer>();
+		Map<List<String>, Integer> cj = new HashMap<List<String>, Integer>();
+		cj = c2;
+		int iteration = 3; 
+		Map<List<String>, Integer> ck = new HashMap<List<String>, Integer>();;
+		do{
+		 if(iteration >3 ){
+			 cj = ck;
+		 }
 		
-		c3 = transactionManager.findKthItemSet(transactions, c2,3);
+		ck = transactionManager.findKthItemSet(transactions, cj,iteration);
 		
 		System.out.println("\n\n\n");
 		System.out.println("THIRD ROUND SET (C3)");
-		for(List<String> items : c3.keySet()){
-			System.out.println(items +"  " + c3.get(items));
+		for(List<String> items : ck.keySet()){
+			System.out.println(items +"  " + ck.get(items));
 		}
 		
+		System.out.println("THIRD ROUND FREQUEST ITEMSET :: ");
+		ck = transactionManager.findFrequestItemSet(transactions, ck, 2);
+		
+		for(List<String> items : ck.keySet()){
+			System.out.println(items +"  " + ck.get(items));
+		}
+		iteration++;
+		}while(ck.size() != 0);
+		
+		
+		System.out.println("FREQUEST ITEMSET :: ");
+		
+		for(List<String> item : cj.keySet()){
+			System.out.println(item + " "+ cj.get(item));		
+		}
 	}
 }

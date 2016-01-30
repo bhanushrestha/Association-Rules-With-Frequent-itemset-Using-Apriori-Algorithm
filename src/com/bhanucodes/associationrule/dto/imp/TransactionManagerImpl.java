@@ -27,7 +27,7 @@ public class TransactionManagerImpl implements TransactionManager {
 		transactions.add(new Transaction("T2",items));
 		
 		items = new ArrayList<String>();
-		items.add("B");items.add("E");
+		items.add("B");items.add("E");items.add("C");
 		transactions.add(new Transaction("T3",items));
 		
 		items = new ArrayList<String>();
