@@ -10,6 +10,8 @@ import com.bhanucodes.associationrule.dto.imp.TransactionManagerImpl;
 
 public class MainProgram {
 
+	public static Integer minSupport = 2;
+	
 	public static void main(String[] args) {
 		System.out.println("Hello ");
 		
@@ -44,7 +46,7 @@ public class MainProgram {
 			System.out.println(items +"  " + c2.get(items));
 		}
 		
-		c2 = transactionManager.findFrequestItemSet(transactions, c2, 2);
+		c2 = transactionManager.findFrequestItemSet(transactions, c2, minSupport);
 		System.out.println("\n\n\n");
 		System.out.println("PRUNED SET (C2)");
 		for(List<String> item : c2.keySet()){
@@ -63,13 +65,13 @@ public class MainProgram {
 		ck = transactionManager.findKthItemSet(transactions, cj,iteration);
 		
 		System.out.println("\n\n\n");
-		System.out.println("THIRD ROUND SET (C3)");
+		System.out.println(iteration + " ROUND SET ");
 		for(List<String> items : ck.keySet()){
 			System.out.println(items +"  " + ck.get(items));
 		}
 		
 		System.out.println("THIRD ROUND FREQUEST ITEMSET :: ");
-		ck = transactionManager.findFrequestItemSet(transactions, ck, 2);
+		ck = transactionManager.findFrequestItemSet(transactions, ck, minSupport);
 		
 		for(List<String> items : ck.keySet()){
 			System.out.println(items +"  " + ck.get(items));

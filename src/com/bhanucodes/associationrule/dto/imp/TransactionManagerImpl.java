@@ -16,18 +16,20 @@ public class TransactionManagerImpl implements TransactionManager {
 	@Override
 	public List<Transaction> populateTransaction() {
 		
+		//TODO Need to make this process from FILES or DB
+		
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		
 		List<String> items = new ArrayList<String>();
-		items.add("A");items.add("B");items.add("C");
+		items.add("A");items.add("B");items.add("C");items.add("E");
 		transactions.add(new Transaction("T1",items));
 		
 		items = new ArrayList<String>();
-		items.add("A");items.add("B");items.add("D");
+		items.add("A");items.add("B");items.add("D");items.add("C");
 		transactions.add(new Transaction("T2",items));
 		
 		items = new ArrayList<String>();
-		items.add("B");items.add("E");items.add("C");
+		items.add("B");items.add("E");items.add("C");items.add("A");
 		transactions.add(new Transaction("T3",items));
 		
 		items = new ArrayList<String>();
@@ -235,7 +237,6 @@ public class TransactionManagerImpl implements TransactionManager {
 			for(int j = 0 ; j< (iteration-1) ; j++){
 				int index = (i+j)%(iteration);
 				subset.add(mergedItems.get(index));
-				System.out.println();
 			}
 			System.out.println(subset);
 			java.util.Collections.sort((subset));
@@ -243,7 +244,7 @@ public class TransactionManagerImpl implements TransactionManager {
 			
 		}
 		
-		System.out.println("CHECKING subseys");
+		System.out.println("CHECKING subsets");
 		for(List<String> subset : subItemSets){
 			System.out.println(subset);
 			if(!lk.keySet().contains(subset)){
